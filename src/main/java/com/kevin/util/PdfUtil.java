@@ -24,9 +24,9 @@ public class PdfUtil {
      * Merge multiple PDF Files to one.<br/>
      * The path of the merged file will be same of the first file in the array.
      * @param files  Array of the PDF file's paths
-     * @return true or false
+     * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static boolean mergePdfFiles(String[] files) {
+    public static String mergePdfFiles(String[] files) {
         return mergePdfFiles(files, "");
     }
 
@@ -35,9 +35,9 @@ public class PdfUtil {
      * The path of the merged file is specified by savePath.<br/>
      * @param files Array of the PDF file's paths.
      * @param savePath save path of the merged file. If the save path do not contains the file name of the merged file, it will be named by uuid.
-     * @return true or false
+     * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static boolean mergePdfFiles(String[] files, String savePath) {
+    public static String mergePdfFiles(String[] files, String savePath) {
         if (files == null|| files.length <= 0) {
             throw new IllegalArgumentException("The files array is null.");
         }
@@ -81,13 +81,13 @@ public class PdfUtil {
                 }
             }
             document.close();
-            return true;
+            return savePath;
         } catch (IOException e) {
             System.out.println("Merged files failed :" + e.getMessage());
-            return false;
+            return null;
         } catch (DocumentException e) {
             System.out.println("Merged files failed :" + e.getMessage());
-            return false;
+            return null;
         }
     }
 
