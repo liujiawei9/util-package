@@ -13,10 +13,10 @@ import java.util.UUID;
 
 /**
  * Use for processing pdf document. Dependent on itext-4.2.2.jar.<br/>
- * version:1.0
+ * version:1.1
  * <p>
  * Created by Kevin on 2016/8/16.<br/>
- * Last Update Time 2016/8/17.
+ * Last Update Time 2016/8/18.
  */
 public class PdfUtil {
 
