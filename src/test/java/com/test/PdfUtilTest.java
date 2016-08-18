@@ -3,7 +3,7 @@ package com.test;
 import com.kevin.util.PdfUtil;
 import org.junit.Test;
 
-/** PdfUtilTest
+/** PdfUtilTest. Just test it.
  * Created by Kevin on 2016/8/17.
  */
 public class PdfUtilTest {
