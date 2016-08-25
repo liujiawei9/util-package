@@ -7,15 +7,17 @@ import javax.xml.bind.DatatypeConverter;
 /**
  * This util is use for converting between Base64 string and file.<br/>
  * Dependent on javax.xml.bind.DatatypeConverter.<br/>
- * version:1.0
+ * version:1.1
  * <p>
  * Created by Kevin on 2016/8/20.<br/>
- * Last Update Time 2016/8/22.
+ * Last Update Time 2016/8/25.
  *
  * @see javax.xml.bind.DatatypeConverter
  * @since 1.6
  */
-public class Base64Util {
+public final class Base64Util {
+
+    private Base64Util() {}
 
     /**
      * Convert file to Base64 String

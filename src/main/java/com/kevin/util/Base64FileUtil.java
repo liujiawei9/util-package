@@ -9,15 +9,17 @@ import java.util.Base64;
 /**
  * This util is use for converting between Base64 string and file.<br/>
  * Dependent on java.util.Base64.<br/>
- * version:1.0
+ * version:1.1
  * <p>
  * Created by Kevin on 2016/8/20.<br/>
- * Last Update Time 2016/8/22.
+ * Last Update Time 2016/8/25.
  *
  * @see java.util.Base64
  * @since 1.8
  */
-public class Base64FileUtil {
+public final class Base64FileUtil {
+
+    private Base64FileUtil() {}
 
     /**
      * Convert file to Base64 string

@@ -19,8 +19,9 @@ import java.util.UUID;
  * Created by Kevin on 2016/8/16.<br/>
  * Last Update Time 2016/8/25.
  */
-public class PdfUtil {
+public final class PdfUtil {
 
+    private PdfUtil() {}
     /**
      * Merge multiple PDF Files to one.<br/>
      * The save path of the merged file will be same of the first file in the array.
