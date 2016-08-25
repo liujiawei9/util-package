@@ -27,7 +27,7 @@ public class PdfUtil {
      * @param files  Array of the PDF file's paths
      * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static String mergePdfFiles(String[] files) throws IOException {
+    public static String mergePdfFiles(String[] files) throws IOException, DocumentException {
         return mergePdfFiles(files, "");
     }
 
@@ -38,7 +38,7 @@ public class PdfUtil {
      * @param savePath save path of the merged file. If the save path do not contains the file name of the merged file, it will be named by uuid.
      * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static String mergePdfFiles(String[] files, String savePath) throws IOException {
+    public static String mergePdfFiles(String[] files, String savePath) throws IOException, DocumentException{
         if (files == null|| files.length <= 0) {
             throw new IllegalArgumentException("The files array is null.");
         }
@@ -85,7 +85,7 @@ public class PdfUtil {
         } catch (IOException e) {
            throw new IOException();
         } catch (DocumentException e) {
-            throw new IOException();
+            throw new DocumentException();
         }
     }
 
