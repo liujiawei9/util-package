@@ -24,7 +24,8 @@ public class PdfUtil {
     /**
      * Merge multiple PDF Files to one.<br/>
      * The save path of the merged file will be same of the first file in the array.
-     * @param files  Array of the PDF file's paths
+     *
+     * @param files Array of the PDF file's paths
      * @return if merge successfully,return the path of the merged file,or return null.
      * @throws IOException
      * @throws DocumentException
@@ -36,14 +37,15 @@ public class PdfUtil {
     /**
      * Merge multiple PDF Files to one.<br/>
      * The save path of the merged file is specified by savePath.<br/>
-     * @param files Array of the PDF file's paths.
+     *
+     * @param files    Array of the PDF file's paths.
      * @param savePath save path of the merged file. If the save path do not contains the file name of the merged file, it will be named by uuid.
      * @return if merge successfully,return the path of the merged file,or return null.
      * @throws IOException
      * @throws DocumentException
      */
-    public static String mergePdfFiles(String[] files, String savePath) throws IOException, DocumentException{
-        if (files == null|| files.length <= 0) {
+    public static String mergePdfFiles(String[] files, String savePath) throws IOException, DocumentException {
+        if (files == null || files.length <= 0) {
             throw new IllegalArgumentException("The files array is null.");
         }
         for (String file : files) {
@@ -71,8 +73,9 @@ public class PdfUtil {
             }
             savePath = savePath + "/" + UUID.randomUUID() + ".pdf";
         }
+        Document document = null;
         try {
-            Document document = new Document(new PdfReader(files[0]).getPageSize(1));
+            document = new Document(new PdfReader(files[0]).getPageSize(1));
             PdfCopy copy = new PdfCopy(document, new FileOutputStream(savePath));
             document.open();
             for (String file : files) {
@@ -84,12 +87,9 @@ public class PdfUtil {
                     copy.addPage(page);
                 }
             }
-            document.close();
             return savePath;
-        } catch (IOException e) {
-           throw e;
-        } catch (DocumentException e) {
-            throw e;
+        } finally {
+            document.close();
         }
     }
 
