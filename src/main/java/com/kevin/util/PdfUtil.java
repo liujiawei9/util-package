@@ -89,7 +89,9 @@ public class PdfUtil {
             }
             return savePath;
         } finally {
-            document.close();
+            if (document != null) {
+                document.close();
+            }
         }
     }
 
