@@ -13,31 +13,32 @@ import java.util.UUID;
 
 /**
  * Use for processing pdf document. Dependent on itext-4.2.2.jar.<br/>
- * version:1.1
+ * Make sure the itext jar is in your project.
+ * version:1.2
  * <p>
  * Created by Kevin on 2016/8/16.<br/>
- * Last Update Time 2016/8/18.
+ * Last Update Time 2016/8/25.
  */
 public class PdfUtil {
 
     /**
      * Merge multiple PDF Files to one.<br/>
-     * The path of the merged file will be same of the first file in the array.
+     * The save path of the merged file will be same of the first file in the array.
      * @param files  Array of the PDF file's paths
      * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static String mergePdfFiles(String[] files) {
+    public static String mergePdfFiles(String[] files) throws IOException {
         return mergePdfFiles(files, "");
     }
 
     /**
      * Merge multiple PDF Files to one.<br/>
-     * The path of the merged file is specified by savePath.<br/>
+     * The save path of the merged file is specified by savePath.<br/>
      * @param files Array of the PDF file's paths.
      * @param savePath save path of the merged file. If the save path do not contains the file name of the merged file, it will be named by uuid.
      * @return if merge successfully,return the path of the merged file,or return null.
      */
-    public static String mergePdfFiles(String[] files, String savePath) {
+    public static String mergePdfFiles(String[] files, String savePath) throws IOException {
         if (files == null|| files.length <= 0) {
             throw new IllegalArgumentException("The files array is null.");
         }
@@ -66,7 +67,6 @@ public class PdfUtil {
             }
             savePath = savePath + "/" + UUID.randomUUID() + ".pdf";
         }
-        System.out.println("Merged PDF file save path : " + savePath);
         try {
             Document document = new Document(new PdfReader(files[0]).getPageSize(1));
             PdfCopy copy = new PdfCopy(document, new FileOutputStream(savePath));
@@ -83,11 +83,9 @@ public class PdfUtil {
             document.close();
             return savePath;
         } catch (IOException e) {
-            System.out.println("Merged files failed :" + e.getMessage());
-            return null;
+           throw new IOException();
         } catch (DocumentException e) {
-            System.out.println("Merged files failed :" + e.getMessage());
-            return null;
+            throw new IOException();
         }
     }
 
