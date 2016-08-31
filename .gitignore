@@ -1,0 +1,18 @@
+# Build artifacts
+build
+out
+target
+
+# Eclipse files
+.classpath
+.project
+.settings
+
+# Intellij IDEA files
+*.ipr
+*.iws
+*.iml
+*.idea
+workspace.xml
+
+
